@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 
 import "components/Application.scss";
+
 import DayList from "./DayList"
+import Appointment from "./Appointment";
 
 
 //Days Array
@@ -23,23 +25,25 @@ const days = [
   },
 ];
 
-const [day, setDay] = useState("Monday");
 
 export default function Application(props) {
+  
+  const [day, setDay] = useState("Monday");
+
   return (
     <main className="layout">
       <section className="sidebar">
-      <img
-        className="sidebar--centered"
-        src="images/logo.png"
-        alt="Interview Scheduler"
-      />
+        <img
+          className="sidebar--centered"
+          src="images/logo.png"
+          alt="Interview Scheduler"
+        />
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
         <DayList
-          days={days}
-          value={day}
-          onChange={setDay}
+          days={state.days}
+          selectDay={state.selectDay}
+          setDay={setDay}
         />
       </nav>
       <img
