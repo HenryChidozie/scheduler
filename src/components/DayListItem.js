@@ -3,6 +3,15 @@ import classNames from "classnames";
 import "./DayListItem.scss";
 
 
+
+const formatSpots = function(spots) {
+  return (
+    !spots || (spots === 0)
+    ? "no spots remaining"
+    : `${spots} spots${spots === 1 ? "" : "s"} remaining`
+  );
+};
+
 export default function DayListItem(props) {
 
   const dayListItemClass = classNames("day-list__item", {
@@ -16,7 +25,7 @@ export default function DayListItem(props) {
       onClick={props.setDay}
     >
       <h2 className="text--regular">{props.name}</h2>
-      <h3 className="text--light">{props.spots} spots remaining</h3>
+      <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
 }
