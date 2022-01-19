@@ -8,7 +8,7 @@ const formatSpots = function(spots) {
   return (
     !spots || (spots === 0)
     ? "no spots remaining"
-    : `${spots} spots${spots === 1 ? "" : "s"} remaining`
+    : `${spots} spot${spots === 1 ? "" : "s"} remaining`
   );
 };
 
