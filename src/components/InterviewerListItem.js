@@ -1,6 +1,11 @@
 import React from "react";
+import classNames from "classnames";
 
-export default function DayListItem(props) {
+import "./InterviewerListItem.scss";
+
+
+
+export default function InterviewerListItem(props) {
 
   return (
     <li className="interviewers__item">
