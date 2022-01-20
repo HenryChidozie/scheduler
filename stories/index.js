@@ -17,12 +17,12 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
+import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
 // import Header from "components/Appointment/Header.js";
-// import Header from "components/Appointment/Header.js";
-// import Header from "components/Appointment/Header.js";
+
 
 //Button Stories
-
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -192,10 +192,22 @@ storiesOf("Appointment", module)
 
   // .add("Confirm", () => <Confirm />)
   // .add("Confirm Message", () => <Confirm Message="Delete the appointment?" />)
-  .add("Confirm Clickable", () => (
+  .add("Confirm", () => (
     <Confirm
       message="Delete the appointment?"
       onConfirm={action("onConfirm")}
       onCancel={action("onCancel")}
+    />
+  ))
+
+  .add("Status", () => <Status />)
+  .add("Error", () => <Error />)
+  .dd("Status Message", () => <Status message="Deleting" />)
+
+  
+  .add("Error Clickable", () => (
+    <Error
+      message="Could not delete appointment"
+      onClose={action("onClose")} 
     />
   ))

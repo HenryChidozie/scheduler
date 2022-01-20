@@ -26,24 +26,24 @@ const days = [
 ];
 
 
-export default function Application(props) {
+export default function Application(_props) {
   
   const [day, setDay] = useState("Monday");
 
   return (
     <main className="layout">
       <section className="sidebar">
-        <img
-          className="sidebar--centered"
-          src="images/logo.png"
-          alt="Interview Scheduler"
-        />
+      <img
+        className="sidebar--centered"
+        src="images/logo.png"
+        alt="Interview Scheduler"
+      />
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
         <DayList
-          days={state.days}
-          selectDay={state.selectDay}
-          setDay={setDay}
+          days={days}
+          value={day}
+          onChange={setDay}
         />
       </nav>
       <img
