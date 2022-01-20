@@ -15,7 +15,7 @@ import Appointment from "components/Appointment";
 
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
-// import Header from "components/Appointment/Header.js";
+import Show from "components/Appointment/Show";
 // import Header from "components/Appointment/Header.js";
 // import Header from "components/Appointment/Header.js";
 // import Header from "components/Appointment/Header.js";
@@ -175,7 +175,12 @@ storiesOf("Appointment", module)
 
   //Appointment Header stories
   .add("Header", () => <Header />)
-  .add("Header 12pm", () => <Header time="12pm" />)
+  //.add("Header 12pm", () => <Header time="12pm" />)
   
   .add("Empty", () => <Empty />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+
+  .add("Show", () => <Show />)
+  // .add("Show Names", () => (
+    
+  // ))
