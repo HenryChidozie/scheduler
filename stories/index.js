@@ -16,7 +16,7 @@ import Appointment from "components/Appointment";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
-// import Header from "components/Appointment/Header.js";
+import Confirm from "components/Appointment/Confirm";
 // import Header from "components/Appointment/Header.js";
 // import Header from "components/Appointment/Header.js";
 // import Header from "components/Appointment/Header.js";
@@ -180,7 +180,22 @@ storiesOf("Appointment", module)
   .add("Empty", () => <Empty />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
 
-  .add("Show", () => <Show />)
-  // .add("Show Names", () => (
-    
-  // ))
+  //.add("Show", () => <Show />)
+  .add("Show", () => (
+    <Show
+      student="Lydia Miller-Jones"
+      interviewer={interviewer}
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+    />
+  ))
+
+  // .add("Confirm", () => <Confirm />)
+  // .add("Confirm Message", () => <Confirm Message="Delete the appointment?" />)
+  .add("Confirm Clickable", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}
+    />
+  ))
