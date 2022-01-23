@@ -2,19 +2,21 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 import "components/Application.scss";
-
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 
 
 //Days Array
 export default function Application(props) {
-  const [days, setDays] = useState([]);
+  const setDays = day => setState({...state, day });
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+  });
   
   useEffect(() => {
     axios.get('/api/days').then(response => {
-      console.log(response.data.results);
-      setResults([...response.data.results])
+      setDays((response.data));
     });
   }, []);
 
@@ -73,9 +75,9 @@ export default function Application(props) {
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
         <DayList
-          days={days}
-          value={days}
-          onChange={setDays}
+          days={state.days}
+          value={state.days}
+          onChange={state.setDays}
         />
       </nav>
       <img
