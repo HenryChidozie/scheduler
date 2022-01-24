@@ -16,10 +16,20 @@ export default function Application(props) {
     appointments: {}
   });
   
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const Appointments = getAppointmentsForDay(state, day);
 
-  const appointmentList = dailyAppointments.map((appointment) => {
-    return <Appointment keys={appointment.id} {...appointment} />;
+  const schedule = 
+  Appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+
+    return (
+      <Appointment
+      keys={appointment.id}
+      id={appointment.id}
+      time={appointment.time}
+      interview={interview}
+      />
+    );
   });
 
 
@@ -63,7 +73,7 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {appointmentList}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section> 
     </main>
