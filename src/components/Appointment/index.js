@@ -31,7 +31,7 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    
+
     transition(SAVING, false);
     setTimeout(() => {
       props.bookInterview(props.id, interview)
