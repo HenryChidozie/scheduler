@@ -34,16 +34,24 @@ export default function Appointment(props) {
 
     transition(SAVING, false);
     setTimeout(() => {
-      props.bookInterview(props.id, interview)
+      props
+        .bookInterview(props.id, interview)
         .then(() => transition(SHOW, true))
-        .catch(() => transition(ERROR_SAVE, true))
+        .catch((error) => transition(ERROR_SAVE, true))
     }, 1000);
   };
 
+  // function deleteApp() {
+  //   transition(CONFIRM, false);
+  // };
 
-  function deleteApp() {
-    transition(CONFIRM, false);
-  };
+  function destroy(event) {
+    transition(DELETING, true);
+    props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
+  }
 
 
   function confirm(confirm) {
@@ -78,7 +86,7 @@ export default function Appointment(props) {
           <Show
             student={props.interview.student}
             interviewer={props.interview.interviewer}
-            onDelete={deleteApp}
+            onDelete={''}
             onEdit={() => transition(EDIT)}
           />
         )}
