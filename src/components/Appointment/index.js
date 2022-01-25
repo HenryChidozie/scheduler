@@ -26,14 +26,15 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  function save(name, interviewer, edit = false) {
+  function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
+    
     transition(SAVING, false);
     setTimeout(() => {
-      props.bookInterview(props.id, interview, edit)
+      props.bookInterview(props.id, interview)
         .then(() => transition(SHOW, true))
         .catch(() => transition(ERROR_SAVE, true))
     }, 1000);

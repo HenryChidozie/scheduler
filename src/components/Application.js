@@ -3,23 +3,38 @@ import axios from "axios";
 
 import "components/Application.scss";
 import DayList from "./DayList";
-import Appointment from "components/Appointment";
-import { getAppointmentsForDay } from "../helpers/selectors";
-import useVisualMode from "../hooks/useVisualMode";
+import Appointment from "./Appointment";
+import { getInterview, getInterviewersForDay } from "../helpers/selectors";
+//import useVisualMode from "../hooks/useVisualMode";
 
+
+function bookInterview(id, interview) {
+  console.log(id, interview);
+  useState({
+    ...state,
+    appointments
+  });
+}
 
 //Days Array
 export default function Application(props) {
-  //const setDay = day => setState({ ...state, day });
+
+  const { bookInterview } = props;
+  const setDay = day => setState({ ...state, day });
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {}
   });
   
-  //const Appointments = getAppointmentsForDay(state);
 
-  // const schedule = 
+  const appointments = {
+    ...state.appointments,
+    [id]: appointment
+  };
+
+  //const Appointments = getAppointmentsForDay(state);
+  //const schedule = 
   // Appointments.map((appointment) => {
   //   const interview = getInterview(state, appointment.interview);
 
