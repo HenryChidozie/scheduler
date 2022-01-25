@@ -10,7 +10,7 @@ import reducer, {
   SET_INTERVIEW,
   UPDATE_SPOTS
 } from "../reducers/application";
-import SocketHandler from "../helpers/socket_handler";
+//import SocketHandler from "../helpers/socket_handler";
 
 // Default values for the application state:
 const DEFAULT_STATE = {
@@ -21,7 +21,7 @@ const DEFAULT_STATE = {
 
 // Initialize the WebSocket handler:
 //    This does not initiate a connection.
-const socket = SocketHandler(process.env.REACT_APP_WEBSOCKET_URL);
+//const socket = SocketHandler(process.env.REACT_APP_WEBSOCKET_URL);
 
 // useApplicationData manages application state separately from
 //    the Application component (which handles rendering).
@@ -52,7 +52,7 @@ export default function useApplicationData() {
         interviewers: req[2].data
       })
       // Set up the WebSocket connection:
-      socket
+      //socket
         .on("message", function(message, _event) {
           dispatch(message);
           dispatch({ type: UPDATE_SPOTS, dayId: state.selectedDay });
