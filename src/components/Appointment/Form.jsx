@@ -5,10 +5,10 @@ import InterviewerList from "../InterviewerList";
 
 
 export default function Form(props) {
-
   const { name, interviewers, interviewer, onSave, onCancel, edit } = props;
+  
   const [username, setUsername] = useState(name || "");
-  const [interviewerId, setInterviewer] = useState(interviewer || null);
+  const [director, setInterviewer] = useState(interviewer || null);
   const [error, setError] = useState("");
 
   // const { state, updateState } = useStateObject({
@@ -17,26 +17,31 @@ export default function Form(props) {
   //   errorMessage: null
   // });
 
+  const reset = function() {
+    setUsername("");
+    setInterviewer(null);
+  };
   
-  
+
+  function cancel() {
+    reset();
+    onCancel();
+  };
+
+
   function validate() {
     if (username === "") {
       setError("Student name cannot be Blank");
       return;
     }
-    if (interviewerId === null) {
+    if (director === null) {
       setError("Please select an interviewer");
       return;
     }
-    onSave(username, interviewerId, edit);
+    onSave(username, director, edit);
   };
 
 
-  function cancel() {
-    setUsername("");
-    setInterviewer(null);
-    onCancel();
-  };
   // function cancel() {
 //   updateState({ stusentName: ""});
 //   props.onCancel();
@@ -49,28 +54,29 @@ export default function Form(props) {
           <input
             className="appointment__create-input text--semi-bold"
             type="text"
-            name="studentName"
+            name="name"
             value={username}
             placeholder="Enter Student Name"
             autoFocus
-            onFocus={(event) => event.target.select()}
-            onChange={(event) => setUsername(event.target.value)}
-            data-testid="student-name-input"
+            onFocus={(e) => e.target.select()}
+            onChange={e => setUsername(e.target.value)}
+            //data-testid="student-name-input"
           />
         </form>
         <section className="appointment__validation">{error}</section>
+        <p>Interviewer</p>
           <InterviewerList
             interviewers={interviewers}
-            interviwer={interviewerId}
-            setInterviewer={(interviewerId) => setInterviewer(interviewerId)}
+            value={director}
+            onChange={setInterviewer}
           />
-      </section>
+        </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => validate}>Save</Button>
+          <Button confirm onClick={() => validate()}>Save</Button>
         </section>
       </section>
     </main>
-  )
+  );
 }

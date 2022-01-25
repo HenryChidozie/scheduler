@@ -17,21 +17,21 @@ export default function Application(props) {
     appointments: {}
   });
   
-  const Appointments = getAppointmentsForDay(state, day);
+  //const Appointments = getAppointmentsForDay(state);
 
-  const schedule = 
-  Appointments.map((appointment) => {
-    const interview = getInterview(state, appointment.interview);
+  // const schedule = 
+  // Appointments.map((appointment) => {
+  //   const interview = getInterview(state, appointment.interview);
 
-    return (
-      <Appointment
-      keys={appointment.id}
-      id={appointment.id}
-      time={appointment.time}
-      interview={interview}
-      />
-    );
-  });
+  //   return (
+  //     <Appointment
+  //     keys={appointment.id}
+  //     id={appointment.id}
+  //     time={appointment.time}
+  //     interview={interview}
+  //     />
+  //   );
+  // });
 
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {schedule}
+        {}
         <Appointment key="last" time="5pm" />
       </section> 
     </main>
