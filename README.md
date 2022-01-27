@@ -25,9 +25,9 @@ Cancelling an Appointment:
 !["Cancelling an Appointment"](/public/images/cancel.png)
 
 ## Table of Contents
-* [Development](https://github.com/henrychidozie/scheduler#develpment)
-  * [Directory Structure](https://github.com/henrychidozie/scheduler#)
-  * [Dependencies](https://github.com/henrychidozie/scheduler#develpment)
+* [Development](https://github.com/HenryChidozie/scheduler#develpment)
+  * [Directory Structure](https://github.com/HenryChidozie/scheduler#directory-structure)
+  * [Dependencies](https://github.com/HenryChidozie/scheduler#dependencies)
   * [Development Dependencies](https://github.com/henrychidozie/scheduler#develpment)
   * [Support Setup](https://github.com/henrychidozie/scheduler#develpment)
   * [Database/API Server Setup](https://github.com/henrychidozie/scheduler#develpment)
