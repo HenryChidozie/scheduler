@@ -8,15 +8,14 @@ Interview Scheduler is not suitable for real-world production use and is only fo
 
 ## Screenshots
 
-["Add New Appointment"](/public/images/add_new.png):
+!["Add New Appointment"](/public/images/add_new.png):
 
-[Booked Appointments](/public/images/booked.png):
+!["Booked Appointments"](/public/images/booked.png):
 
-[Editing an Appointment](/public/images/edit_app.png):
+!["Editing an Appointment"](/public/images/edit_app.png):
 
-[Cancelling an Appointment](/public/images/cancel.png):
+!["Cancelling an Appointment"](/public/images/cancel.png):
 
-/Users/henry_chuks_dev/lighthouse/scheduler/public/images/edit_app.png
 ## Table of Contents
 * [Development](https://github.com/henrychidozie/scheduler#develpment)
   * [Directory Structure](https://github.com/henrychidozie/scheduler#)
