@@ -3,80 +3,66 @@ import Button from "../Button";
 import InterviewerList from "../InterviewerList";
 
 
-
 export default function Form(props) {
-  const { name, interviewers, interviewer, onCancel } = props;
-  
-  const [username, setUsername] = useState(name || "");
-  const [director, setInterviewer] = useState(interviewer || null);
-  //const [error, setError] = useState("");
+  const [name, setName] = useState(props.name || "");
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
-  // const { state, updateState } = useStateObject({
-  //   stusentName: props.name || "",
-  //   interviewerId: props.interviewer || null,
-  //   errorMessage: null
-  // });
-
-  const reset = function() {
-    setUsername("");
-    setInterviewer(null);
-  };
-  
-
-  const cancel = () => {
+  function cancel() {
     reset();
-    onCancel();
-  };
+    props.onCancel();
+  }
+  
+    const reset = function() {
+      setName("");
+      setInterviewer(null);
+    };
+  
+  function validate() {
+    if (!name) {
+      setError("Student name cannot be blank");
+      return;
+    }
+    setError("");
+    props.onSave(name, interviewer);
+  }
 
-
-  // function validate() {
-  //   if (username === "") {
-  //     setError("Student name cannot be Blank");
-  //     return;
-  //   }
-  //   if (director === null) {
-  //     setError("Please select an interviewer");
-  //     return;
-  //   }
-  //   onSave(username, director, edit);
-  // };
-
-
-  // function cancel() {
-//   updateState({ stusentName: ""});
-//   props.onCancel();
-// }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.onSave(name, interviewer);
+  }
 
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+        <form autoComplete="off" onSubmit={event => { event.preventDefault();}}>
           <input
             className="appointment__create-input text--semi-bold"
+            name={props.name}
             type="text"
-            name="name"
-            value={username}
-            placeholder="Enter Student Name"
-            autoFocus
-            onFocus={(e) => e.target.select()}
-            onChange={e => setUsername(e.target.value)}
-            //data-testid="student-name-input"
+            placeholder='Enter Student Name'
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            onSubmit={event => event.preventDefault()}
+            data-testid='student-name-input'
+          />
+        <section className="appointment__validation">{error}</section>
+        <InterviewerList 
+          interviewers = {props.interviewers} 
+          onChange={setInterviewer} 
+          value={interviewer}
           />
         </form>
-        <section className="appointment__validation">{}</section>
-        <p>Interviewer</p>
-          <InterviewerList
-            interviewers={interviewers}
-            value={director}
-            onChange={setInterviewer}
-          />
-        </section>
+      </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={""}>Save</Button>
+          <Button onClick={cancel} danger>Cancel</Button>
+          <Button 
+            confirm onClick={validate} 
+            onSubmit={(event) => 
+            handleSubmit(event)}>Save</Button>
         </section>
       </section>
     </main>
   );
-}
+};

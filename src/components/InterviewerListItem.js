@@ -1,5 +1,5 @@
 import React from "react";
-import className from "classnames";
+import classNames from "classnames";
 import "./InterviewerListItem.scss";
 
 
@@ -7,7 +7,7 @@ import "./InterviewerListItem.scss";
 export default function InterviewerListItem(props) {
   const { name, avatar, selected, setInterviewer } = props;
   const interviewerClass = 
-    selected ? className("interviewers__item--selected") : className("interviewers__items");
+    selected ? classNames("interviewers__item--selected") : classNames("interviewers__items");
 
   // const interviewerClass = classNames(
   //   "interviewers__item", {
