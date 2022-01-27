@@ -8,12 +8,16 @@ Interview Scheduler is not suitable for real-world production use and is only fo
 
 ## Screenshots
 
+Add New Appointment:
 !["Add New Appointment"](/public/images/add_new.png)
 
+Booked Appointments:
 !["Booked Appointments"](/public/images/booked.png)
 
+Editing an Appointment:
 !["Editing an Appointment"](/public/images/edit_app.png)
 
+Cancelling an Appointment:
 !["Cancelling an Appointment"](/public/images/cancel.png)
 
 ## Table of Contents
