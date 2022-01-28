@@ -1,71 +1,37 @@
-// import { useState } from "react";
-
-// export default function useVisualMode(initial) {
-//   const [mode, setMode] = useState(initial);
-//   const [history, setHistory] = useState([initial]);
-
-//   const transition = function (mode, replace = false) {
-
-//     if (!replace) {
-//       setHistory(prev => [...prev, mode]); 
-//       return setMode(mode);
-//     } else {
-//       history.pop();
-//       setHistory(() => [...history, mode]);
-//       return setMode(mode);
-//     }
-//   };
-
-//   const back = function() {
-//     history.pop();
-//     return setMode(history[history.length - 1]);
-//   }
-
-//   return { mode, transition, back };
-// }
-
-// Hook used to implement appointment transitions
-//    and record their history.
-
 import { useState } from "react";
 
-// Mode constants:
-export const EMPTY          = "EMPTY";
-export const SHOW           = "SHOW";
-export const CREATE         = "CREATE";
-export const EDIT           = "EDIT";
-export const SAVING         = "SAVING";
-export const CONFIRM_DELETE = "CONFIRM_DELETE";
-export const DELETING       = "DELETING";
-export const ERROR_SAVE     = "ERROR_SAVE";
-export const ERROR_DELETE   = "ERROR_DELETE";
+  const useVisualMode = initial => {
+  const [mode, setMode] = useState(initial);
+  const [history, setHistory] = useState([initial]);
 
-// Hook definiton:
+  const transition = (newMode, error) => {
 
-export default function useVisualMode(initial) {
-
-  const [ mode,    setMode    ] = useState(initial);
-  const [ history, setHistory ] = useState([ initial ]);
-
-  function transition(newMode, replace = false) {
-    if (newMode !== mode) {
+    //If there is an error, places the new mode in the correct position
+    if (error) {
+      const newHistory = [...history];
+      newHistory.pop();
+      
+      setHistory(prevHistory => [...newHistory, newMode]);
       setMode(newMode);
-      (replace
-        ? history[history.length - 1] = newMode
-        : history.push(newMode)
-      );
-      setHistory([ ...history ]);
+    } else {
+      //Change history to a copy of the history with newMode at the end.
+      setHistory(prevHistory => [...prevHistory, newMode]);
+      //Asign mode to new mode
+      setMode(newMode);
     }
   };
 
-  function back() {
+  //**Reverse to previous mode in history */
+  const back = () => {
+    //Checks if history has atleast two items
     if (history.length > 1) {
-      history.pop();
-      setMode(history[history.length - 1]);
-      setHistory([ ...history ]);
+      //sets mode too one behind the end element
+      setMode(history[history.length - 2]);
+      //sets history to a copy of history minus the end
+      setHistory(prevHistory => prevHistory.slice(0, prevHistory.length - 1));
     }
-  }
-
+  };
   return { mode, transition, back };
-
 }
+
+export default useVisualMode;
