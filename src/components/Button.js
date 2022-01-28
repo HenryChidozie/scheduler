@@ -1,5 +1,5 @@
 //Button Component
-import React from "react";
+import React, { Fragment } from "react";
 import "./Button.scss";
 import classNames from "classnames"
 
@@ -10,12 +10,14 @@ export default function Button(props) {
    });
 
    return (
-      <button 
-         className={buttonClass}
-         onClick={props.onClick}
-         disabled={props.disabled}
-      >
-         {props.children}
-      </button>
+      <Fragment>
+         <button 
+            className={buttonClass}
+            onClick={props.onClick}
+            disabled={props.disabled}
+         >
+            {props.children}
+         </button>
+      </Fragment>
    );
-};
+}
