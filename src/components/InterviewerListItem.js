@@ -1,25 +1,24 @@
 //Component showing interviewer's avatar and name
 import React from "react";
+import "components/InterviewerListItem.scss";
 import classNames from "classnames";
-import "./InterviewerListItem.scss";
 
 
 export default function InterviewerListItem(props) {
-  const { name, avatar, selected, setInterviewer } = props;
-  const interviewerClass = 
-    selected ? classNames("interviewers__item--selected") : classNames("interviewers__items");
-
+  const interviewersClass = classNames("interviewers_item", {
+    "interviewers__item--selected": props.selected,
+});
   return (
     <li 
-      className={interviewerClass}
-      onClick={setInterviewer}
+    className={interviewersClass}
+    onClick={() => props.setInterviewer(props.id)}
     >
       <img
         className="interviewers__item-image"
-        src={avatar}
-        alt={name}
+        src={props.avatar}
+        alt={props.name}
       />
-      {selected && name}
+      {props.selected && props.name}
     </li>
   );
-};
+}
