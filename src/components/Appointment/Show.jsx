@@ -1,3 +1,4 @@
+//Component to show student and interviewer
 import React from 'react';
 
 export default function Show(props) {
