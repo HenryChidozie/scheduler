@@ -1,3 +1,4 @@
+//Component that handles editing of interview appointments
 import React, { useState } from 'react';
 import Button from "../Button";
 import InterviewerList from "../InterviewerList";
@@ -7,17 +8,17 @@ export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
-
-  function cancel() {
-    reset();
-    props.onCancel();
-  }
   
     const reset = function() {
       setName("");
       setInterviewer(null);
     };
   
+    function cancel() {
+      reset();
+      props.onCancel();
+    }
+    
   function validate() {
     if (!name) {
       setError("Student name cannot be blank");

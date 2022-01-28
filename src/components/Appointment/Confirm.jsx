@@ -1,3 +1,4 @@
+//component that confirms appointments
 import React from 'react';
 import Button from "../Button";
 

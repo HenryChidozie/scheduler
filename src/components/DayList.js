@@ -1,16 +1,16 @@
+//Component that shows list of days and remaining spots in the sidebar
 import React from "react";
 import DayListItem from "./DayListItem";
 
-
 export default function DayList(props) {
-  const dayChecker = props.days.map((ele) => {
+  const dayChecker = props.days.map((day) => {
     return (
       <DayListItem
-        key={ele.id}
-        id={ele.id}
-        name={ele.name}
-        spots={ele.spots}
-        selected={ele.name === props.day}
+        key={day.id}
+        id={day.id}
+        name={day.name}
+        spots={day.spots}
+        selected={day.name === props.day}
         setDay={props.setDay}
       />
     );

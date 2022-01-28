@@ -1,3 +1,4 @@
+//Component showing empty interview appointment slots
 import React from "react";
 
 

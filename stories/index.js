@@ -49,12 +49,13 @@ storiesOf("DayListItem", module)
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) 
   // To define our stories, we call add() once for each of our test states to generate a story
+  .add("Null", () => <DayListItem />)
   .add("Unselected", () => <DayListItem name="Monday" spots={5} />) 
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
     // action() allows us to create a callback that appears in the actions panel when clicked
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> 
+    <DayListItem name="Tuesday" setDay={(_event) => action("setDay")(1)} spots={5} /> 
   ));
 
 
@@ -104,6 +105,9 @@ storiesOf("DayListItem", module)
       .addParameters({
         backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
       })
+      .add("Null", () => (
+        <interviewerListItem />
+      ))
       .add("Unselected", () => (
         <InterviewerListItem
           id={interviewer.id}
@@ -124,7 +128,7 @@ storiesOf("DayListItem", module)
           id={interviewer.id}
           name={interviewer.name}
           avatar={interviewer.avatar}
-          setInterviewer={() => action("setInterviewer")(interviewer.id)}
+          setInterviewer={(_event) => action("setInterviewer")(interviewer.id)}
         />
       ));
 
@@ -145,14 +149,14 @@ storiesOf("DayListItem", module)
         .add("Initial", () => (
           <InterviewerList
             interviewers={interviewers}
-            onChange={action("onChange")} //updated
+            setInterviewer={action("setInterviewer")} //updated
           />
         ))
         .add("Preselected", () => (
           <InterviewerList
             interviewers={interviewers}
-            value={3}
-            onChange={action("onChange")}
+            interviewer={3}
+            setInterviewer={action("setInterviewer")}
           />
         ))
         .add("Clickable", () => (
@@ -183,14 +187,6 @@ storiesOf("Appointment", module)
       </>
     ))
 
-
-  //.add("Show", () => <Show />)
-  // .add("Show Names", () => (
-  //   <Show
-  //     student="Lydia Miller-Jones"
-  //     interviewer={interviewer}
-  //   />
-  // ))
   .add("Show", () => (
     <>
       <Header time="12pm" />
@@ -203,9 +199,6 @@ storiesOf("Appointment", module)
     </>
   ))
 
-
-  // .add("Confirm", () => <Confirm />)
-  // .add("Confirm Message", () => <Confirm Message="Delete the appointment?" />)
   .add("Confirm", () => (
     <>
       <Header time="12pm" />
@@ -217,8 +210,6 @@ storiesOf("Appointment", module)
     </>
   ))
 
-
-  //.add("Status", () => <Status />)
   .add("Status", () => (
     <>
       <Header time="12pm" />
@@ -226,9 +217,6 @@ storiesOf("Appointment", module)
     </>
   ))
   
-
-  // .add("Error", () => <Error />)
-  // .add("Error Message", () => <Error message="Could not delete appointment." />)
   .add("Error", () => (
     <>
       <Header time="12pm" />
@@ -238,7 +226,6 @@ storiesOf("Appointment", module)
       />
     </>
   ))
-
 
   .add("Form Create", () => (
     <>
@@ -265,20 +252,20 @@ storiesOf("Appointment", module)
     </>
   ))
 
-  // .add("Appointment Empty", () => (
-  //   <Fragment>
-  //     <Appointment id={1} time="12pm" />
-  //     <Appointment id="last" time="1pm" />
-  //   </Fragment>
-  // ))
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
 
-  // .add("Appointment Booked", () => (
-  //   <Fragment>
-  //     <Appointment
-  //       id={1}
-  //       time="12pm"
-  //       interview={{ student: "Lydia Miller-Jones", interviewer }}
-  //     />
-  //     <Appointment id="last" time="1pm" />
-  //   </Fragment>
-  // ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="12pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))

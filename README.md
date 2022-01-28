@@ -25,27 +25,29 @@ Cancelling an Appointment:
 !["Cancelling an Appointment"](/public/images/cancel.png)
 
 ## Table of Contents
-* [Development](https://github.com/HenryChidozie/scheduler#develpment)
+
+* [Development](https://github.com/HenryChidozie/scheduler#development)
   * [Directory Structure](https://github.com/HenryChidozie/scheduler#directory-structure)
   * [Dependencies](https://github.com/HenryChidozie/scheduler#dependencies)
-  * [Development Dependencies](https://github.com/henrychidozie/scheduler#develpment)
-  * [Support Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [Database/API Server Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [Client Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [Running Webpack Development Server](https://github.com/henrychidozie/scheduler#develpment)
-  * [Running Storybook Visual Testbed](https://github.com/henrychidozie/scheduler#develpment)
+  * [Development Dependencies](https://github.com/HenryChidozie/scheduler#develpment-dependencies)
+  * [Support Setup](https://github.com/HenryChidozie/scheduler#support-setup)
+  * [Database/API Server Setup](https://github.com/HenryChidozie/scheduler#database/api-server-setup)
+  * [Client Setup](https://github.com/HenryChidozie/scheduler#client-setup)
+  * [Running Webpack Development Server](https://github.com/HenryChidozie/scheduler#running-webpack-development-server)
+  * [Running Storybook Visual Testbed](https://github.com/HenryChidozie/scheduler#running-storybook-visual-testbed)
 
-* [Testing](https://github.com/henrychidozie/scheduler#testing)
-  * [Database Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [API Server Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [Client Setup](https://github.com/henrychidozie/scheduler#develpment)
-  * [Running Jest Test Framework](https://github.com/henrychidozie/scheduler#develpment)
-  * [Running Cypress Test Framework](https://github.com/henrychidozie/scheduler#develpment)
+* [Testing](https://github.com/HenryChidozie/scheduler#testing)
+  * [Database Setup](https://github.com/HenryChidozie/scheduler#database-setup)
+  * [API Server Setup](https://github.com/HenryChidozie/scheduler#api-server-setup)
+  * [Client Setup](https://github.com/HenryChidozie/scheduler#client-setup)
+  * [Running Jest Test Framework](https://github.com/HenryChidozie/scheduler#running-jest-test-framework)
+  * [Running Cypress Test Framework](https://github.com/HenryChidozie/scheduler#running-cypress-test-framework)
 
 
 ### Development
 
 #### Directory Structure
+
 The project directory is arranged as follows:
 ```
 ./                 Main project repository
@@ -68,6 +70,7 @@ Do not edit or push to repo:
 ```
 
 #### Dependencies
+
 Interview Scheduler requires [Node.js](https://nodejs.org) and [Postgres](https://postgresql.org) and the following [NPM](https://npmjs.com) packages are used:
 
 * [React](https://reactjs.org)
@@ -78,6 +81,7 @@ Interview Scheduler requires [Node.js](https://nodejs.org) and [Postgres](https:
 * [Normalize.css](https://npmjs.com/package/normalize.css)
 
 #### Development Dependencies
+
 The following NPM packages are used for development:
 
 * [React Test Renderer](https://npmjs.com/package/react-test-renderer)
@@ -88,11 +92,13 @@ The following NPM packages are used for development:
 
 
 #### Support Setup
+
 Install Node.js from your [package manager](https://nodejs.org/download/package-manager), or [download](https://nodejs.org/download/) binaries (for fun) or source code (for maximum fun).
 
 Install [Postgres](https://postgresql.org).
 
 #### Database/API Server Setup
+
 Execute the following to set up Interview Scheduler API server:
 ```
 cd <project-directory>
@@ -125,10 +131,11 @@ PGPORT=5432
 ```
 
 #### Client Setup
+
 Execute the following to set up Interview Scheduler:
 ```
 cd <project-directory>
-git clone https://github.com/henrychidozie/scheduler
+git clone https://github.com/HenryChidozie/scheduler
 cd scheduler
 npm install
 ```
@@ -141,12 +148,14 @@ CHOKIDAR_USEPOLLING=false
 ```
 
 #### Running Webpack Development Server
+
 ```
 cd <project-directory>/scheduler
 npm start
 ```
 
 #### Running Storybook Visual Testbed
+
 Storybook is excellent for testing React components in isolation from the rest of the application for development or testing.
 ```
 cd <project-directory>/scheduler
@@ -154,7 +163,9 @@ npm run storybook
 ```
 
 ### Testing
+
 #### Database Setup
+
 Log into Postgres as a user with superuser privileges. For example:
 ```
 sudo -u postgres psql
@@ -172,6 +183,7 @@ SELECT * FROM days JOIN appointments ON appointments.day_id = days.id;
 ```
 
 #### API Server Setup
+
 Create API server test environment file:
 ```
 <project-directory>/scheduler-api/.env.test
@@ -190,6 +202,7 @@ npm run test:server
 ```
 
 #### Client Setup
+
 Create client test environment file:
 ```
 <project-directory>/scheduler/.env.test
@@ -208,6 +221,7 @@ npm test
 ```
 
 #### Running Cypress Test Framework
+
 Make sure you're running the API server in test mode with the appropriate data.
 ```
 cd <project-directory>/scheduler

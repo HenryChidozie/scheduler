@@ -1,3 +1,4 @@
+//Component that shows when an error occurs
 import React from 'react';
 
 
